@@ -57,9 +57,10 @@ const sleep = (ms: number) => {
 const offerNuggets = async () => {
 
   const data = await gatherExamples();
-  const options = data.sections.map((el) => ({value: el.name, label: el.name}));
+  const options: { value: string; label: string }[] = data.sections.map((el) => ({ value: el.name, label: el.name }));
+  
   const section = await select({
-    message: 'There examples on a range of topics. Pick one to explore:',
+    message: 'There are examples on a range of topics. Pick one to explore:',
     options: options
   });
 
@@ -67,7 +68,7 @@ const offerNuggets = async () => {
   // get links from sections object where the label matches the section
   // and offer a random selection of 5
   const links = data.sections.find((el) => el.name === section)?.links || [];
-  const nugs = getRandomExamples(links, 5).map(({ url, title }) => ({ value: url, label: title || '' }));
+  const nugs : { value: string; label: string }[] = getRandomExamples(links, 5).map(({ url, title }) => ({ value: url, label: title || '' }));
   const nugget = await select({
     message: 'Here are a few random nuggets from the ' + color.yellow(section as string) + ' section',
     options: nugs
