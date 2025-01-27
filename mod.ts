@@ -57,7 +57,7 @@ const sleep = (ms: number) => {
 const offerNuggets = async () => {
 
   const data = await gatherExamples();
-  const options: { value: string; label: string }[] = data.sections.map((el) => ({ value: el.name, label: el.name }));
+  const options: { value: string; label: string }[] = data.sections.map((el) => ({ value: el.name || '', label: el.name || ''}));
   
   const section = await select({
     message: 'There are examples on a range of topics. Pick one to explore:',
