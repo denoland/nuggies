@@ -11,3 +11,5 @@ This is a little bit of fun to accompany https://deno.com/nuggies, as part of [L
 # Run the CLI to fetch some examples
 deno -A jsr:@deno/nuggies
 ```
+
+![Running @deno/nuggies in a terminal window](./nuggies-terminal.webp)
