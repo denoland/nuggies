@@ -70,7 +70,7 @@ const offerNuggets = async () => {
   const links = data.sections.find((el) => el.name === section)?.links || [];
   const nugs : { value: string; label: string }[] = getRandomExamples(links, 5).map(({ url, title }) => ({ value: url, label: title || '' }));
   const nugget = await select({
-    message: 'Here are a few random nuggets from the ' + color.yellow(section as string) + ' section',
+    message: 'Here are a few random nuggets from the ' + color.yellow(section as string) + ' section:',
     options: nugs
     });
     
