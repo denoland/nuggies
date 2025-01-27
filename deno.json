@@ -1,0 +1,15 @@
+{
+  "name": "@deno/nuggies",
+  "version": "0.1.0",
+  "license": "MIT",
+  "exports": "./mod.ts",
+  "tasks": {
+    "nuggie": "deno run -A mod.ts"
+  },
+  "imports": {
+    "@clack/prompts": "npm:@clack/prompts@^0.9.1",
+    "@rdsq/open": "jsr:@rdsq/open@^1.0.1",
+    "cheerio": "npm:cheerio@^1.0.0",
+    "picocolors": "npm:picocolors@^1.1.1"
+  }
+}
