@@ -25,11 +25,16 @@ const gatherExamples = async () => {
   return $.extract({
     sections: [
       {
-        selector: 'section',
+        selector: 'section:has(h2)',
         value: {
-          name: 'h2',
+          name:{
+            selector: 'h2',
+            value: (el) => {
+              return $(el).text().replace('Jump to heading#', '').trim();
+            }
+          },
           links: [{
-            selector: 'a.learn-link',
+            selector: 'li.learning-list-item>a',
             value: (el) => {
               const title = $(el).text() || '';
               const url = $(el).attr('href') || '';
@@ -57,7 +62,9 @@ const sleep = (ms: number) => {
 const offerNuggets = async () => {
 
   const data = await gatherExamples();
+  console.log(data);
   const options: { value: string; label: string }[] = data.sections.map((el) => ({ value: el.name || '', label: el.name || ''}));
+  
   
   const section = await select({
     message: 'There are examples on a range of topics. Pick one to explore:',
